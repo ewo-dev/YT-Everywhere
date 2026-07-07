@@ -1,0 +1,49 @@
+#yt-everywhere-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 20vh;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+#yt-everywhere-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.yt-everywhere-container {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+#yt-everywhere-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 18px;
+  font-family: system-ui, -apple-system, sans-serif;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: #f1f1f1;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease;
+}
+
+#yt-everywhere-input:focus {
+  border-color: #ff0000;
+}
+
+#yt-everywhere-input::placeholder {
+  color: #888;
+}

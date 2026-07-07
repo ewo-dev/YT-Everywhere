@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "YT Everywhere",
+  "version": "1.0.0",
+  "description": "Search YouTube instantly from anywhere on the web",
+  "permissions": ["tabs", "scripting"],
+  "commands": {
+    "toggle-overlay": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U",
+        "mac": "Command+Shift+U"
+      },
+      "description": "Toggle YouTube search overlay"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles/overlay.css"]
+    }
+  ],
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  }
+}
