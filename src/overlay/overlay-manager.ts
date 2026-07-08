@@ -5,7 +5,11 @@ import type { OverlayState } from "@/types";
 const state: OverlayState = { visible: false };
 
 export function toggleOverlay(): void {
-  state.visible ? hideOverlay() : showOverlay();
+  if (state.visible) {
+    hideOverlay();
+  } else {
+    showOverlay();
+  }
 }
 
 function showOverlay(): void {
