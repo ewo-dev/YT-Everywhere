@@ -25,8 +25,10 @@ export function createOverlayElement(): HTMLElement {
 
 function handleInputKeydown(event: KeyboardEvent): void {
   if (event.key === "Enter") {
-    const input = event.target as HTMLInputElement;
-    handleSearchSubmit(input.value);
+    const target = event.target;
+    if (target instanceof HTMLInputElement) {
+      handleSearchSubmit(target.value);
+    }
     return;
   }
 
@@ -36,7 +38,8 @@ function handleInputKeydown(event: KeyboardEvent): void {
 }
 
 function handleBackdropClick(event: MouseEvent): void {
-  if ((event.target as HTMLElement).id === OVERLAY_ID) {
+  const target = event.target;
+  if (target instanceof HTMLElement && target.id === OVERLAY_ID) {
     toggleOverlay();
   }
 }

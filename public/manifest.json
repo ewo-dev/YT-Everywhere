@@ -19,13 +19,13 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["http://*/*", "https://*/*"],
       "js": ["content.js"],
       "css": ["styles/overlay.css"]
     }
   ],
   "icons": {
-    "48": "icons/icon-48.png",
-    "96": "icons/icon-96.png"
+    "48": "icons/icon-48.svg",
+    "96": "icons/icon-96.svg"
   }
 }

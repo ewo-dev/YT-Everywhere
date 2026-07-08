@@ -31,6 +31,14 @@ function hideOverlay(): void {
 
   overlay.classList.remove("visible");
   state.visible = false;
+
+  // Remove overlay element from the DOM to clean up event listeners
+  try {
+    overlay.remove();
+  } catch (err) {
+    // ignore if remove is not supported in older environments
+    if (overlay.parentElement) overlay.parentElement.removeChild(overlay);
+  }
 }
 
 function focusInput(): void {
