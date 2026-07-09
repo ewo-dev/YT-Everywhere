@@ -45,13 +45,26 @@ async function sendToggleMessage(): Promise<void> {
       files: ["styles/overlay.css"],
     });
 
-    // Give the script a moment to register its listener, then resend
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    try {
-      await browser.tabs.sendMessage(tabId, message);
-      console.log("[YT][background] message sent after injection");
-    } catch (retryErr) {
-      console.error("[YT][background] sendMessage failed after injection:", retryErr);
+    // Retry sending the message with exponential backoff to allow listener registration
+    const maxRetries = 4;
+    let attempt = 0;
+    let sent = false;
+    while (attempt < maxRetries && !sent) {
+      const delay = Math.pow(2, attempt) * 100; // 100ms, 200ms, 400ms, 800ms
+      await new Promise((resolve) => setTimeout(resolve, delay));
+      try {
+        await browser.tabs.sendMessage(tabId, message);
+        console.log("[YT][background] message sent after injection (attempt)", attempt + 1);
+        sent = true;
+        break;
+      } catch (retryErr) {
+        console.warn("[YT][background] retry sendMessage attempt", attempt + 1, "failed:", retryErr);
+      }
+      attempt++;
+    }
+
+    if (!sent) {
+      console.error("[YT][background] sendMessage failed after retries");
     }
   }
 }

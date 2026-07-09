@@ -1,3 +1,18 @@
 node_modules/
 dist/
 web-ext-artifacts/
+
+# OS and editor
+.DS_Store
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.*
+
+# Logs and temp
+*.log
+*.tmp
+*.swp
+*.swo

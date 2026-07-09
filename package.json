@@ -9,6 +9,16 @@
     "lint": "eslint src/",
     "format": "prettier --write \"src/**/*.{ts,css,html}\""
   },
+  "author": "",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
   "devDependencies": {
     "typescript": "^5.8.0",
     "vite": "^6.0.0",
