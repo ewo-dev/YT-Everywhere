@@ -8,7 +8,7 @@ function isCommandMessage(value: unknown): value is CommandMessage {
     typeof value === "object" &&
     value !== null &&
     "command" in value &&
-    typeof (value as any).command === "string"
+    typeof (value as { command?: unknown }).command === "string"
   );
 }
 

@@ -35,7 +35,7 @@ function hideOverlay(): void {
   // Remove overlay element from the DOM to clean up event listeners
   try {
     overlay.remove();
-  } catch (err) {
+  } catch {
     // ignore if remove is not supported in older environments
     if (overlay.parentElement) overlay.parentElement.removeChild(overlay);
   }
